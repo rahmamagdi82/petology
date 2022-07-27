@@ -196,11 +196,11 @@ Widget button({
       ),
     );
 
-Widget categoryCard(
-        {required Function(bool) hover,
-        required bool nameSelected,
-        required String image,
-        required VoidCallback onTap}) =>
+Widget categoryCard({
+  required Function(bool) hover,
+  required bool nameSelected,
+  required String image,
+  required VoidCallback onTap}) =>
     InkWell(
       onTap: onTap,
       onHover: hover,

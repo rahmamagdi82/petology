@@ -7,8 +7,6 @@ class NeedsModel
     json.forEach((element) {
       date.add(Data.fromJson(element));
     });
-
-
   }
 }
 class Data

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)  => PetologyCubit()..getFirstSection()..getSecondSection()..getNeedsSection()..getInformation(),
+      create: (BuildContext context)  => PetologyCubit()..getFirstSection()..getSecondSection()..getNeedsSection()..getInformation()..getPets(),
       child: BlocConsumer<PetologyCubit,PetologyStates>(
         builder: (BuildContext context, state) =>MaterialApp(
           home:  HomePage(),

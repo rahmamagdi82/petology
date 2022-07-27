@@ -6,6 +6,7 @@ import 'package:petology/modules/about_us.dart';
 
 import '../../../models/first_section-model.dart';
 import '../../../models/information_model.dart';
+import '../../../models/pets_model.dart';
 import '../../network/endPoints.dart';
 import '../../network/remote/dio_helper.dart';
 import 'states.dart';
@@ -91,6 +92,21 @@ class PetologyCubit extends Cubit<PetologyStates> {
     });
   }
 
+  ListPet pets=ListPet();
+  void getPets(){
+    emit(GetPetsLoadingState());
+    DioHelper.getData(
+      url: PETS,
+    ).then((value) {
+      pets = ListPet.fromJson(value.data);
+      print(pets.date[0].name);
+      emit(GetPetsSuccessState());
+    }).catchError((error){
+      emit(GetPetsErrorState());
+      print(error.toString());
+    });
+  }
+
   bool dogCard=false;
   bool catCard=false;
   void changeSelectedCardColor({
@@ -100,5 +116,14 @@ class PetologyCubit extends Cubit<PetologyStates> {
     dogCard = dog;
     catCard = cat;
     emit(ChangeSelectedCardColorState());
+  }
+
+  List petsShadow=[false,false,false,false,false,false];
+  void changeSelectedPet({
+    required int index,
+    required bool value
+  }){
+    petsShadow[index]=value;
+    emit(ChangeSelectedPetShadowState());
   }
 }
