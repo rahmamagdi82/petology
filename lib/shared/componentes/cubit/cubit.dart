@@ -19,9 +19,7 @@ class PetologyCubit extends Cubit<PetologyStates> {
 
 
   List<Widget> screens=[
-    if(token == null) LoginPage()
-     else AboutUsPage()
-
+    LoginPage()
   ];
   void changeScreens(Widget page) {
     screens=[];
