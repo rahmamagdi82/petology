@@ -6,3 +6,4 @@ const SECONDSECTION = '/static/homepage/second-section';
 const NEED = '/static/homepage/pet-needs';
 const INFORMATIONS  = '/static/homepage/footer';
 const PETS = '/pets?filter=';
+const PETDETAILS = '/pets/:id';

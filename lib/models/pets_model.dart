@@ -14,7 +14,7 @@ class ListPet
 
 class Pet
 {
-  int? id;
+  late int id;
   String? name;
   String? phone;
   List<String> images=[];
@@ -32,8 +32,10 @@ class Pet
   bool? vaccinated;
   int? categoryId;
   int? userId;
-  LoginModel? user;
+  Map<String,dynamic>? user;
   String? category;
+
+  Pet();
   Pet.fromJson(Map<String, dynamic> json){
     id=json['id'];
     name=json['name'];
@@ -56,6 +58,9 @@ class Pet
     json['image'].forEach((element){
       images.add(element);
     });
-    user=LoginModel.fromJson(json['user']);
+    user={
+      'fName':json['user']['firstName'],
+      'lName' : json['user']['lastName'],
+    };
   }
 }

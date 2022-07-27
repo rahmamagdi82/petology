@@ -2,6 +2,7 @@ import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:petology/modules/pet_information.dart';
 import 'package:petology/shared/componentes/cubit/cubit.dart';
 import 'package:petology/shared/componentes/cubit/states.dart';
 
@@ -11,9 +12,10 @@ import '../shared/componentes/componentes.dart';
 import '../shared/styles/styles.dart';
 
 class AboutUsPage extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
 
     return BlocConsumer<PetologyCubit, PetologyStates>(
       listener: (context, states) {},
@@ -422,7 +424,10 @@ class AboutUsPage extends StatelessWidget {
                   child: MaterialButton(
                     height: 80.0,
                     minWidth: 300.0,
-                    onPressed: () {},
+                    onPressed: () {
+                      PetologyCubit.get(context).changeScreens(PetInformationPage(model: model));
+
+                    },
                     child: const Text(
                       'Read more',
                       style: TextStyle(

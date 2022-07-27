@@ -24,6 +24,10 @@ class GetPetsLoadingState extends PetologyStates {}
 class GetPetsSuccessState extends PetologyStates {}
 class GetPetsErrorState extends PetologyStates {}
 
+class GetPetDetailsLoadingState extends PetologyStates {}
+class GetPetDetailsSuccessState extends PetologyStates {}
+class GetPetDetailsErrorState extends PetologyStates {}
+
 class ChangeSelectedCardColorState extends PetologyStates {}
 
 class ChangeSelectedPetShadowState extends PetologyStates {}

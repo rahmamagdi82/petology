@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petology/models/needs_model.dart';
 import 'package:petology/modules/about_us.dart';
+import 'package:petology/modules/login/login.dart';
+import 'package:petology/shared/componentes/componentes.dart';
 
 import '../../../models/first_section-model.dart';
 import '../../../models/information_model.dart';
@@ -15,8 +17,11 @@ class PetologyCubit extends Cubit<PetologyStates> {
   PetologyCubit() : super(InitialState());
   static PetologyCubit get(context) => BlocProvider.of(context);
 
+
   List<Widget> screens=[
-    AboutUsPage(),
+    if(token == null) LoginPage()
+     else AboutUsPage()
+
   ];
   void changeScreens(Widget page) {
     screens=[];
@@ -99,10 +104,29 @@ class PetologyCubit extends Cubit<PetologyStates> {
       url: PETS,
     ).then((value) {
       pets = ListPet.fromJson(value.data);
-      print(pets.date[0].name);
       emit(GetPetsSuccessState());
     }).catchError((error){
       emit(GetPetsErrorState());
+      print(error.toString());
+    });
+  }
+
+  Pet pet=Pet();
+  void getPetDetails({
+  required int id,
+}){
+    emit(GetPetDetailsLoadingState());
+    DioHelper.getData(
+      url: PETDETAILS,
+      query: {
+        "id":id,
+      },
+    ).then((value) {
+      pet = Pet.fromJson(value.data);
+      print(pet.name);
+      emit(GetPetDetailsSuccessState());
+    }).catchError((error){
+      emit(GetPetDetailsErrorState());
       print(error.toString());
     });
   }
