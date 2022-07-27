@@ -369,10 +369,11 @@ Widget cardItem()=>Card(
     padding: const EdgeInsets.symmetric(vertical: 80.0),
     child: Column(
       children: [
-        Image(
+        const Image(
+          height: 380.0,
+          width: 380.0,
           image: NetworkImage(
-              'https://media.istockphoto.com/vectors/people-walking-in-a-city-park-sad-tired-young-guy-and-thoughtful-girl-vector-id1312462909?k=20&m=1312462909&s=612x612&w=0&h=JDI9xj7Vo8AmIcZH__jL6U4QFNqwKLMi2qplzSzw0uA='
-          ),
+              'https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80'          ),
         ),
         SizedBox(height: 30.0,),
         Text(
@@ -384,7 +385,7 @@ Widget cardItem()=>Card(
             color: HexColor('#492F24'),
           ),
         ),
-        SizedBox(height: 30.0,),
+        const SizedBox(height: 30.0,),
         Material(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(55.0),
@@ -398,7 +399,7 @@ Widget cardItem()=>Card(
             height: 80.0,
             minWidth: 300.0,
             onPressed: (){},
-            child:Text(
+            child:const Text(
               'Read more',
               style: TextStyle(
                 color: Colors.black,
@@ -437,7 +438,7 @@ Widget cardItem()=>Card(
               height: 180.0,
               width: 140.0,
             ),
-            SizedBox(height: 10.0,),
+            const SizedBox(height: 10.0,),
             Text(
               '${model.title}',
               style: TextStyle(
